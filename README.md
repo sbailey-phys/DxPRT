@@ -5,6 +5,7 @@ DxPRT is a precomputed radiance transfer framework implemented in DirectX12 that
 While this project is fully functioning in its current state, it is still being developed and is thus limited in some areas. In particular the ray-tracing algorithm requires further optimizations, and it is only recommended to process objects with a few thousand vertices. Further, only diffuse objects are supported, with inter-reflected bounces and specular materials to be implemented shortly. It is therefore suggested that this is only used for demonstration purposes, with future updates enabling DxPRT to be used within larger pipelines. See below for the current to-do list.
 
 <img src="https://github.com/sbailey-phys/DxPRT/blob/main/Screenshots/BunnyScreenshot1.png" width=50% height=50%>
+
 ## Dependencies
 DxPRT has been designed with minimal dependencies on external libraries, only depending on those that are standard with DirextX12 and Win32. In particular, the following libraries need to be linked to the project:
 -dxgi.lib
