@@ -81,7 +81,7 @@ These structs are used to define the integration over the environment map in Gen
 		const std::string& outFile, const EM_DESC& desc);
 ```
 Processes and environment map to generate a .prt file containing the
- harmonic coefficients. The data file must have phi vary along the x-direction and theta vary along the y-direction. If the output file cannot be accessed, then this function will fail.
+ harmonic coefficients. The data must have phi vary along the x-direction and theta vary along the y-direction. If the output file cannot be accessed, then this function will fail.
 -	_IN_ device: the currently active device
 -	_IN_ numPixelsX: the number of pixels in the x-direction (width)
 -	_IN_ numPixelsY: the number of pixels in the y-direction (height)
@@ -92,7 +92,7 @@ void GenerateEM(ID3D12Device device, void data,
 		const UINT64& numPixelsX, const UINT64& numPixelsY,
 		const std::string& outFile, const EM_DESC& desc);
 ```
-Performs the same operation as the above function but takes in a .hdr as input. This file must be in the RGBE format and be run-length encoded. If the file cannot be read, then the function will fail and you should instead consider using the above function instead. 
+Performs the same operation as the above function but takes in a .hdr as input. This file must be in the RGBE format and be run-length encoded. If the file cannot be read, then the function will fail and you should consider using the above function instead. 
 -	_IN_ device: the currently active device
 -	_IN_ hdrFile: the path to the hdr file to be read
 -	_IN_ outFile: the path to the output file where the coefficients will be stored
@@ -138,7 +138,7 @@ Constructs the workspace with the specified number of environment maps. This num
 void Workspace::AddEM(ID3D12Device device, ID3D12GraphicsCommandList commandList,
 			const std::string& emFile, const std::string& hdrFile, int iEM);
 ```
-Adds an environment map to the workspace. Any number of environment maps can be added in any order. However, the total number of environment should not exceed that stated on creation of the workspace. A command list must be passed to record the relevant copy commands, and this should be executed before calling Initialize. This method, as well the AddPRT method be called upon from multiple threads.
+Adds an environment map to the workspace. Any number of environment maps can be added in any order. However, the total number of environment should not exceed that stated on creation of the workspace. A command list must be passed to record the relevant copy commands, and this should be executed before calling Initialize(). This method, as well the AddPRT() method be called upon from multiple threads.
 		 
 -	_IN_ device: the currently active device
 -	_IN_ commandList: the command list used to record
@@ -149,7 +149,7 @@ Adds an environment map to the workspace. Any number of environment maps can be 
 void Workspace::AddPRT(ID3D12Device device, ID3D12GraphicsCommandList commandList,
 			const std::string& prtFile);
 ```
-Adds a mesh to the workspace. Unlike AddEM, only a single mesh can be added. This mesh should be from a .prt file, where the coefficients are also listed. A command list must be passed to record the relevant copy commands and this should be executed before calling Initialize. This method, as well the AddEM method can be called upon from multiple threads.
+Adds a mesh to the workspace. Unlike AddEM(), only a single mesh can be added. This mesh should be from a .prt file, where the coefficients are also listed. A command list must be passed to record the relevant copy commands and this should be executed before calling Initialize(). This method, as well the AddEM() method can be called upon from multiple threads.
 		
 -	_IN_ device: the currently active device
 -	_IN_ commandList: the command list used to record
