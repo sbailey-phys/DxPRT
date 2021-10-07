@@ -8,11 +8,15 @@ While this project is fully functioning in its current state, it is still being 
 
 ## Dependencies
 DxPRT has been designed with minimal dependencies on external libraries, only depending on those that are standard with DirextX12 and Win32. In particular, the following libraries need to be linked to the project:
--dxgi.lib
--d3dcompiler.lib
--d3d12.lib
+
+- dxgi.lib
+- d3dcompiler.lib
+- d3d12.lib
+
 Further to this, the standard helper functions are used, and the following header should be present in the include directory:
--d3dx12.h
+
+- d3dx12.h
+
 Other than these, several Win32 headers are used, although the number of these will reduce in future updates. We do not list these as it is expected that the user will have these standard headers.
 
 To use this project, the DxPRT file should be present in the include directory. All files present in the source files must be present in the current working directory. Finally, the path to the Shaders file (that contains the compiled shaders) needs to be input into various functions during both the generation of coefficients and rendering. All functions, classes and structs defined in this project are under the DxPRT namespace.
@@ -41,7 +45,7 @@ The rendering of the mesh is handled by the Workspace class, defined in the DxPR
  
  7) when ready to record the draw command, first call SetRTVHandle() and DSVHandle() to set the relevant non-shader visible descriptor, then call the Render() method
 
-Precise details of each function are given below.
+Precise details of each function are given below and an example is given in demos/RenderDxPRT.cpp.
 
 
 
@@ -200,7 +204,7 @@ Sets the viewport for the rasterizer stage
 ```c++
 void Workspace::SetCurrentEM(const UINT& iEM);
 ```
-Sets the current environment map to be displayed. This should exceed the number of environment maps in the constructor, however, if it does then the modulo will be taken.
+Sets the current environment map to be displayed. This should not exceed the number of environment maps in the constructor, however, if it does then the modulo will be taken.
 		 
 -	_IN_ iEM: the index of the environment map to be displayed
 ```c++
