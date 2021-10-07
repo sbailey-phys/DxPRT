@@ -290,13 +290,13 @@ void InitializePRT() {
     }
 
     // load the prt and em files on indepdent threads
-    std::thread prtThread(prtThreadFunction, std::ref(workspace), "prtFiles/cleanBunnynew.prt",
+    std::thread prtThread(prtThreadFunction, std::ref(workspace), "prtFiles/BunnyPRT.prt",
         g_commandList[0], g_device);
-    std::thread emThread1(emThreadFunction, std::ref(workspace), "prtFiles/cleanFieldEM8.prt", "hdrFiles/lilienstein_2k.hdr",
+    std::thread emThread1(emThreadFunction, std::ref(workspace), "prtFiles/FieldEM.prt", "hdrFiles/lilienstein_2k.hdr",
         g_commandList[1].Get(), g_device, 0);
-    std::thread emThread2(emThreadFunction, std::ref(workspace), "prtFiles/cleanSnowEM8.prt", "hdrFiles/snowy_cemetery_2k.hdr",
+    std::thread emThread2(emThreadFunction, std::ref(workspace), "prtFiles/SnowEM.prt", "hdrFiles/snowy_cemetery_2k.hdr",
         g_commandList[2].Get(), g_device, 1);
-    std::thread emThread3(emThreadFunction, std::ref(workspace), "prtFiles/cleanStudioEMnew.prt", "hdrFiles/photo_studio_loft_hall_2k.hdr",
+    std::thread emThread3(emThreadFunction, std::ref(workspace), "prtFiles/StudioEM.prt", "hdrFiles/photo_studio_loft_hall_2k.hdr",
         g_commandList[3].Get(), g_device, 2);
 
     prtThread.join();
