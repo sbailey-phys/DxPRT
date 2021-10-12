@@ -222,7 +222,7 @@ namespace DxPRT_Utility {
         pipelines.rayTracerPrePassRootSig.Initialize(device);
 
         pipelines.rayTracerPrePassPipeline.SetRootSignature(pipelines.rayTracerPrePassRootSig);
-        pipelines.rayTracerPrePassPipeline.SetComputeShader((shaderPath + L"RayTracerPrePassShader.cso").c_str());
+        pipelines.rayTracerPrePassPipeline.SetComputeShader((shaderPath + L"/RayTracerPrePassShader.cso").c_str());
         pipelines.rayTracerPrePassPipeline.Initialize(device);
 
 
@@ -234,7 +234,7 @@ namespace DxPRT_Utility {
         pipelines.rayTracerRootSig.Initialize(device);
 
         pipelines.rayTracerPipeline.SetRootSignature(pipelines.rayTracerRootSig);
-        pipelines.rayTracerPipeline.SetComputeShader((shaderPath + L"RayTracerShader.cso").c_str());
+        pipelines.rayTracerPipeline.SetComputeShader((shaderPath + L"/RayTracerShader.cso").c_str());
         pipelines.rayTracerPipeline.Initialize(device);
 
 
@@ -247,7 +247,7 @@ namespace DxPRT_Utility {
             1, 0);
         pipelines.integrateRootSig.Initialize(device, true);
 
-        pipelines.integratePipeline.SetComputeShader((shaderPath + L"PRTIntegrateShader.cso").c_str());
+        pipelines.integratePipeline.SetComputeShader((shaderPath + L"/PRTIntegrateShader.cso").c_str());
         pipelines.integratePipeline.SetRootSignature(pipelines.integrateRootSig);
         pipelines.integratePipeline.Initialize(device);
     }
