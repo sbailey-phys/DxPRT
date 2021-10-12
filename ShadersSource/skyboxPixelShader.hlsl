@@ -72,7 +72,7 @@ PIXELOUTPUT main(VERTEXOUTPUT IN)
     float theta = atan2(sqrt(pow(IN.AbsPos.x, 2) + pow(IN.AbsPos.z, 2)), IN.AbsPos.y) / PI;
     float phi = atan2(IN.AbsPos.z, IN.AbsPos.x) / (PI * 2.0f) +0.5f;
 
-    float3 hdr = skyboxBuffer.SampleLevel(LinearClampSampler, float2(phi, theta), 0);
+    float3 hdr = skyboxBuffer.SampleLevel(LinearClampSampler, float2(1.0f - phi, theta), 0);
     float3 ldr = float3(1.0f, 1.0f, 1.0f) - exp(- IN.exposure *hdr);
 
     OUT.colour = float4(ldr, 1.0f);
